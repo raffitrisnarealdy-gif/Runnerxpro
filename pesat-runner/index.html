@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>PESAT RUNNER 3D</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="./script.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="gameCanvas"></canvas>
+      <div id="speedLines" class="speed-lines" aria-hidden="true"></div>
+
+      <div id="hud" class="hud hidden">
+        <div class="hud-box">
+          <span class="hud-label">SCORE</span>
+          <span id="scoreValue">0000</span>
+        </div>
+        <div class="hud-box">
+          <span class="hud-label">COINS</span>
+          <span id="coinValue">00</span>
+        </div>
+        <div class="hud-box">
+          <span class="hud-label">SPEED</span>
+          <span id="speedValue">1.0x</span>
+        </div>
+      </div>
+
+      <div id="menuOverlay" class="overlay visible">
+        <div class="panel">
+          <h1>PESAT RUNNER 3D</h1>
+          <p class="subtitle">Run • Dodge • Collect</p>
+          <button id="playButton" class="primary-button">PLAY GAME</button>
+          <button id="howToPlayButton" class="secondary-button">HOW TO PLAY</button>
+          <div class="score-line">
+            <span>High Score</span>
+            <strong id="menuHighScore">0000</strong>
+          </div>
+        </div>
+      </div>
+
+      <div id="howToPlayOverlay" class="overlay hidden">
+        <div class="panel instructions-panel">
+          <h2>HOW TO PLAY</h2>
+          <ul>
+            <li>Use Left/Right to change lanes</li>
+            <li>Use Jump to avoid cones and barriers</li>
+            <li>Crates must be dodged by moving lanes</li>
+            <li>Silver, gold, and rainbow coins are worth 5, 10, and 25 points</li>
+            <li>Click or tap Punch to parry and fling nearby objects</li>
+            <li>Survive as long as possible</li>
+          </ul>
+          <button id="closeInstructionsButton" class="primary-button">BACK</button>
+        </div>
+      </div>
+
+      <div id="gameOverOverlay" class="overlay hidden">
+        <div class="panel">
+          <h2>GAME OVER</h2>
+          <div class="game-over-stats">
+            <div><span>Score</span><strong id="finalScoreValue">0000</strong></div>
+            <div><span>Coins</span><strong id="finalCoinsValue">00</strong></div>
+            <div><span>High Score</span><strong id="finalHighScoreValue">0000</strong></div>
+          </div>
+          <button id="playAgainButton" class="primary-button">PLAY AGAIN</button>
+          <button id="mainMenuButton" class="secondary-button">MAIN MENU</button>
+        </div>
+      </div>
+
+      <div id="touchControls" class="touch-controls">
+        <button class="touch-button" data-action="left">Left</button>
+        <button class="touch-button" data-action="jump">Jump</button>
+        <button class="touch-button" data-action="right">Right</button>
+        <button class="touch-button" data-action="parry">Punch</button>
+      </div>
+    </div>
+  </body>
+</html>
